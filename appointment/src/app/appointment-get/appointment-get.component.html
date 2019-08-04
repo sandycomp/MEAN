@@ -1,0 +1,20 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+
+      <td colspan="2">Actions</td>
+  </tr>
+  </thead>
+
+  <tbody>
+      <tr *ngFor="let appointment of appoinaments">
+          <td>{{ appointment.firstName }}</td>
+          <td>{{ appointment.lastName }}</td>
+
+          <td><a [routerLink]="['/edit', appointment._id]" class="btn btn-primary">Edit</a></td>
+          <td><a (click)="deleteAppointment(appointment._id)" class="btn btn-danger">Delete</a></td>
+      </tr>
+  </tbody>
+</table>

@@ -1,0 +1,79 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="appointmentForm" (ngSubmit)="createAppointment()" novalidate class="example-form">
+        <h5>Select Specialist Doctor</h5>
+        <mat-form-field class="example-full-width">
+          <mat-label>Doctor Name</mat-label>
+          <mat-select formControlName="doctorInfo">
+            <mat-option *ngFor="let doctor of doctors" [value]="doctor">
+              {{doctor}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <h5>Appointment Date</h5>
+        <mat-form-field>
+          <input matInput [matDatepicker]="dp3" placeholder="Select Date" disabled formControlName="appointmentDate">
+          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <h5>Patient Information</h5>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+			<mat-form-field class="example-full-width">
+            <input matInput placeholder="First name" formControlName="firstName" #firstName>
+			</mat-form-field>
+		  </td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Last/Sir Name" formControlName="lastName">
+          </mat-form-field></td>
+        </tr></table>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Street 1" formControlName="street1">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Street 2" formControlName="street2">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Landmark" formControlName="landmark">
+        </mat-form-field>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="city/Village" formControlName="city">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="State" formControlName="state">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput #postalCode maxlength="6" placeholder="Pin Code" formControlName="pinCode">
+            <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
+          </mat-form-field></td>
+        </tr></table>
+        <h5>Contact Information</h5>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="E-mail" formControlName="email">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+          </mat-form-field></td>
+        </tr></table>
+
+        <mat-form-field class="example-full-width">
+          <textarea matInput #healthIssue maxlength="1200" placeholder="Health Condition/Issue Description" formControlName="problemDescription"></textarea>
+          <mat-hint align="end">{{healthIssue.value.length}} / 1200</mat-hint>
+        </mat-form-field>
+
+        <h5>Insurance Details</h5>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Insurance Details" formControlName="inssuranceDetails">
+        </mat-form-field>
+
+       <!--  [disabled]="!appointmentForm.invalid" <button (click) = "createAppointment(doctorInfo.value, appointmentDate.value, firstName.value, lastName.value, street1.value, street2.value, landmark.value, city.value, state.value, pinCode.value, phoneNumber.value, email.value, problemDescription.value, inssuranceDetails.value)" mat-flat-button type="submit" color="primary">Create Appointment</button> -->
+	   <button mat-flat-button color="primary">Create Appointment</button>
+    </form>
+  </div>
+</div>
+
